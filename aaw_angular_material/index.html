@@ -1,0 +1,126 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js"></script>
+    <script src="./demo-ctrl.js"></script>
+</head>
+
+<body ng-app="MyApp" ng-cloak>
+    <div ng-controller="DemoCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="MyApp">
+        <md-content layout-padding="">
+            <div>
+                <form name="userForm">
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Nome</label>
+                            <input ng-model="user.nome">
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Sobrenome</label>
+                            <input ng-model="user.sobrenome">
+                        </md-input-container>
+                    </div>
+
+                    <md-input-container class="md-block">
+                        <label>Endereço</label>
+                        <input ng-model="user.address">
+                    </md-input-container>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Cidade</label>
+                            <input ng-model="user.cidade">
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>UF</label>
+                            <md-select ng-model="user.uf">
+                                <md-option ng-repeat="uf in ufs" value="{{uf.abbrev}}">
+                                    {{uf.abbrev}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>CEP</label>
+                            <input name="cep" ng-model="user.cep" placeholder="12345" required="" ng-pattern="/^[0-9]{8}$/" md-maxlength="8">
+
+                            <div ng-messages="userForm.cep.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">O campo CEP é obrigatório.</div>
+                                <div ng-message="pattern" class="my-message">Esse não parece ser um CEP válido.
+                                </div>
+                                <div ng-message="md-maxlength" class="my-message">
+                                    Apenas oito caracteres são suficientes. Não utilize pontos ou hífen.
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout-gt-xs="row">
+
+                    </div>
+
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Email</label>
+                            <input ng-model="user.email">
+                        </md-input-container>
+                        <md-switch ng-model="user.ofertas" aria-label="Switch 1">
+                            Receber ofertas por e-mail?
+                        </md-switch>
+                    </div>
+
+                    <div layout-gt-xs="row">
+                        <md-checkbox ng-model="user.cb1" aria-label="Checkbox 1">
+                            Cadastrar como Ativo?
+                        </md-checkbox>
+                    </div>
+
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Nome</label>
+                            <input ng-model="user.numeroCartao">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Validade</label>
+                            <md-datepicker ng-model="user.dataCartao"></md-datepicker>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Código de Segurança</label>
+                            <input ng-model="user.cvvCartao">
+                        </md-input-container>
+
+
+                    </div>
+                    <div layout-gt-xs="row">
+                        <md-radio-group ng-model="user.bandeiraCartao">
+
+                            <md-radio-button value="Visa" class="md-primary">Visa</md-radio-button>
+                            <md-radio-button value="MasterCard"> Master Card </md-radio-button>
+                            <md-radio-button value="AmericanExpress">American Express</md-radio-button>
+
+                        </md-radio-group>
+                    </div>
+
+                    <md-input-container class="md-block">
+                        <label>Observações</label>
+                        <textarea ng-model="user.obs" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
+                    </md-input-container>
+
+                    <md-button class="md-raised">Cadastrar</md-button>
+                </form>
+            </div>
+        </md-content>
+    </div>
+</body>
+
+</html>
